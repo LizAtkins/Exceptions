@@ -12,8 +12,9 @@ class invalidTransitionException{};
 int main() {
 
 	char alphabet[SIZE] = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a','b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
-	char s;
-	int o;
+
+	char s = 'Z';
+	int o = -1;
 
 	try {
 		cout << character(alphabet, s, o) << endl;
@@ -35,7 +36,7 @@ int main() {
 }
 
 char character(char alphabet[], char start, int offset) {
-	int i;
+	int i = 0;
 	bool found = false;
 	char letter;
 
@@ -56,7 +57,9 @@ char character(char alphabet[], char start, int offset) {
 		throw invalidCharacterException();
 	}
 	if (start >= 'A' && start <= 'Z') {
-		throw invalidTransitionException();
+		if (letter >= 'a' && letter <= 'z') {
+			throw invalidTransitionException();
+		}
 	}
 	return letter;
  }
