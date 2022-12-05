@@ -5,7 +5,7 @@
 using namespace std;
 const int SIZE = 52;
 
-char character(char, int);
+char character(char[], char, int);
 class invalidRangeException {};
 class invalidCharacterException{};
 class invalidTransitionException{};
@@ -15,6 +15,18 @@ int main() {
 	char s;
 	int o;
 
+	try {
+		cout << character(alphabet, s, o) << endl;
+	}
+	catch(invalidRangeException) {
+		cout << "\nError, target is not a letter ";
+	}
+	catch (invalidCharacterException) {
+		cout << "\nError, start is not a letter ";
+	}
+	catch (invalidTransitionException) {
+		cout << "\nError, upper and lowercase transitions not allowed ";
+	}
 
 
 	cout << endl << endl;
@@ -22,7 +34,7 @@ int main() {
 	return 0;
 }
 
-char character(char start, int offset) {
+char character(char alphabet[], char start, int offset) {
 	int i;
 	bool found = false;
 	char letter;
