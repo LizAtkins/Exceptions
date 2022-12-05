@@ -23,6 +23,28 @@ int main() {
 }
 
 char character(char start, int offset) {
+	int i;
+	bool found = false;
+	char letter;
 
-
-}
+	if (start >= 'A' && start <= 'z') {
+		while (i < SIZE && !found) {
+			if (alphabet[i] == start) {
+				found = true;
+				letter = i;
+			}
+			i++;
+		}
+		letter = alphabet[(i - 1) + offset];
+		if (letter < 'A' || letter > 'z') {
+			throw invalidRangeException();
+		}
+	}
+	else {
+		throw invalidCharacterException();
+	}
+	if (start >= 'A' && start <= 'Z') {
+		throw invalidTransitionException();
+	}
+	return letter;
+ }
